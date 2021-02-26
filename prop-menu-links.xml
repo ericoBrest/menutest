@@ -1,0 +1,62 @@
+
+MENU 1
+------
+
+Input :
+<ux-header-menu model="navlink" a11y-label="Accès rapides">
+  <ux-header-menu-item label="Mes comptes" lib-link="mescomptes.html" a11y-label="Aller sur la page de mes comptes" selected></ux-header-menu-item>
+  <ux-header-menu-item label="Aide et contact" lib-link="aideetcontact.html" a11y-label="Aller sur la page d'aide et contact"></ux-header-menu-item>
+</ux-header-menu>
+
+Output :
+<nav role="navigation" aria-label="Accès rapides">
+  <ul class="c-header-navlink">
+    <li aria-current="page" class="c-header-navlink__item">
+      <!-- (pas de lien si c'est la page courante) -->
+      <!-- <a href="mescomptes.html" class="c-header-navlink__link" aria-label="Aller sur la page de mes comptes"> -->
+        <span>Mes comptes</span>
+      <!-- </a> -->
+    </li>
+    <li class="c-header-navlink__item">
+      <a href="aideetcontact.html" class="c-header-navlink__link" aria-label="Aller sur la page d'aide et contact">
+        <span>Aide et contact</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+Questions client : 
+Pour l'usage de aria-current sur les items de menu, on a besoin de savoir pour le cas où le lien "Mes comptes" est sélectionné :
+- Est-ce qu'il englobe plusieurs pages ? (usage de aria-current="true") Ça veut dire qu'on est bien cette rubrique, mais pas forcément sur une page précise...
+- Ou est-ce que ça correspond à la page en cours ? (aria-current="page") Ça veut dire qu'on est sur la page qui correspond à ce lien. 
+
+
+
+MENU 2 
+------
+
+Input : 
+<!-- (liens et intitulés à titre indicatif) -->
+<ux-header-menu model="buttongroup" a11y-label="Accès AXA banque ou AXA assurances">
+  <ux-header-menu-item label="Banque" lib-link="www.axa.fr/compte-bancaire.html" a11y-label="Aller sur le site Axa banque" selected></ux-header-menu-item>
+  <ux-header-menu-item label="Assurance" lib-link="www.axa.fr/compte-bancaire.html" a11y-label="Aller sur le site Axa assurances"></ux-header-menu-item>
+</ux-header-menu>
+
+Output :
+<nav role="navigation" aria-label="Accès AXA banque ou AXA assurances">
+  <ul class="c-header-buttongroup">
+    <li aria-current="true" class="c-header-buttongroup__item">
+      <!-- (pas de lien si c'est le site courant) -->
+      <!-- <a href="www.axa.fr/compte-bancaire.html" class="c-header-buttongroup__link" aria-label="Aller sur le site Axa banque"> (pas de lien si c'est la rubrique courante) -->
+        <span>Banque</span>
+      <!-- </a> -->
+    </li>
+    <li class="c-header-buttongroup__item">
+      <a href="www.axa.fr/compte-bancaire.html" class="c-header-buttongroup__link" aria-label="Aller sur le site Axa assurances">
+        <span>Assurance</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- On utilise aria-current="true" pour indiquer qu'on est dans la rubrique en question (partie "AXA Banque") -->
